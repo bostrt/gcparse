@@ -18,11 +18,11 @@ grammar CMS;
 // 1.166: [GC 1.166: [ParNew: 108749K->13032K(118016K), 0.0131036 secs] 140046K->61145K(249088K), 0.0131651 secs] [Times: user=0.00 sys=0.00, real=0.01 secs]
 // 1.593: [GC[YG occupancy: 15176 K (118016 K)]1.593: [Rescan (parallel) , 0.0003847 secs]1.594: [weak refs processing, 0.0000057 secs] [1 CMS-remark: 115034K(131072K)] 130210K(249088K), 0.0005792 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
 //
-line       : (event NEWLINE)* ;
-event      : timestamp ': [' eventType ']';
-eventType   : EVENT_TYPE ;
+line       : (phase NEWLINE)* ;
+phase      : timestamp ': [' phaseType ']';
+phaseType   : PHASE_TYPE ;
 timestamp  : TIME ;
 
-EVENT_TYPE : ( 'GC' | 'CMS-concurrent-mark-start' | 'CMS-concurrent-preclean-start' );
+PHASE_TYPE : ( 'GC' | 'CMS-concurrent-mark-start' | 'CMS-concurrent-preclean-start' );
 TIME       : [0-9]+ '.' [0-9]+ ;
 NEWLINE    : [\r\n]+;
