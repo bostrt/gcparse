@@ -5,19 +5,19 @@
 
 grammar Parallel;
 
-line     : ( phase NEWLINE )* ;
-phase    : timestamp ': [' phaseType ' ' youngGenSize oldGenSize size permGenSize ', ' timeTaken ' secs]' timeTakeDetail;
+line     : ( event NEWLINE )* ;
+event    : timestamp ': [' phase ' ' youngGenSize oldGenSize size permGenSize ', ' timeTaken ' secs]' timeTakeDetail;
 
-youngGenSize : ('[PSYoungGen: ' size ']')? ;
-oldGenSize   : ('[PSOldGen: ' size ']')? ;
-permGenSize  : ('[PSPermGen: ' size ']')? ;
+youngGenSize : ('[PSYoungGen: ' size '] ')? ;
+oldGenSize   : ('[PSOldGen: ' size '] ')? ;
+permGenSize  : ('[PSPermGen: ' size '] ')? ;
 timeTakeDetail : (' [Times: user=' user ' sys=' sys ', real=' real ' secs]')? ;
 
 user : TIME ;
 sys  : TIME ;
 real : TIME ;
 
-phaseType  : PHASE_TYPE ;
+phase  : PHASE ;
 size       : before 'K->' after 'K(' committed 'K)' ;
 before     : INT ;
 after      : INT ;
@@ -25,7 +25,7 @@ committed  : INT ;
 timeTaken  : TIME ;
 timestamp  : TIME ;
 
-PHASE_TYPE : ( 'GC' | 'Full GC' ) ;
+PHASE : ( 'GC' | 'Full GC' ) ;
 TIME       : [0-9]+ '.' [0-9]+ ;
 INT        : [0-9]+ ;
 NEWLINE    : [\r\n]+;

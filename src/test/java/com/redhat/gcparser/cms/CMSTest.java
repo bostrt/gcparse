@@ -19,31 +19,6 @@ public class CMSTest {
             this.expectedPhase = expectedPhase.getEventTypeName();
             this.expectedTimestamp = expectedTimestamp;
         }
-
-        @Override
-        public void enterPhase(CMSParser.PhaseContext ctx) {
-            System.out.println("Entering.");
-            // This is where you would start creating a new CMS object instance.
-        }
-
-        @Override
-        public void enterPhaseType(CMSParser.PhaseTypeContext ctx) {
-            assert expectedPhase.equals(ctx.getText());
-            System.out.println(ctx.getText());
-        }
-
-        @Override
-        public void enterTimestamp(CMSParser.TimestampContext ctx) {
-            assert expectedTimestamp == Double.parseDouble(ctx.getText());
-            System.out.println(ctx.getText());
-        }
-
-        @Override
-        public void exitPhase(CMSParser.PhaseContext ctx) {
-            System.out.println("Exiting.");
-            // This is where you would have a callback that adds the CMS instance to a collection of some sort.
-            // this.parseCallback.onComplete(cmsInstance);
-        }
     }
 
     /**
