@@ -40,7 +40,6 @@ public class Size {
 
     @Override
     public String toString() {
-        // 907842K->769258K(916288K)
-        return String.format("%dK->%dK(%dK)", before, after, committed);
+        return String.format("%sK->%sK(%sK)", before, after, committed);
     }
 }

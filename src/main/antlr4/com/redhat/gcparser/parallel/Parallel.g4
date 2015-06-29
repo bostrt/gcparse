@@ -10,7 +10,7 @@ event    : timestamp ': [' phase ' ' youngGenSize oldGenSize size permGenSize ',
 
 youngGenSize : ('[PSYoungGen: ' size '] ')? ;
 oldGenSize   : ('[PSOldGen: ' size '] ')? ;
-permGenSize  : ('[PSPermGen: ' size '] ')? ;
+permGenSize  : (' [PSPermGen: ' size ']')? ;
 timeTakeDetail : (' [Times: user=' user ' sys=' sys ', real=' real ' secs]')? ;
 
 user : TIME ;
